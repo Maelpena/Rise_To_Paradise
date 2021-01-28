@@ -1,0 +1,45 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveProjectile : MonoBehaviour
+{
+    public float speed = 7.0f;
+    public int dir = 1;
+    public Rigidbody2D rb;
+    public Animator anim;
+    public CharacterData ownerCharData;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
+            rb.MovePosition(new Vector2(speed * dir * Time.deltaTime + transform.position.x, transform.position.y));
+    }
+    public void SetWay(bool isLeft)
+    {
+        if (!isLeft)
+        {
+                GetComponent<SpriteRenderer>().flipX = true;
+                dir = -1;
+        }
+    }
+    public void Hit(Collider2D collision)
+    {
+        dir = 0;
+        if (collision.gameObject.tag.Equals("Enemies"))
+        {
+            ownerCharData.score += collision.gameObject.GetComponent<CharacterData>().score;
+            anim.Play("Hitting");
+        }
+        else
+        {
+            anim.Play("Splashing");
+        }
+    }
+}
