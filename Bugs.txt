@@ -1,5 +1,0 @@
-///////////////////// DEPLACEMENT PLAYER /////////////////////////////
-
-One side plateforme, s'arrete dedans parfois
-
-Si pendant un Wall slide au saute au moment où on touche le sol, ca annule le saut..
