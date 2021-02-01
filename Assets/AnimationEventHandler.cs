@@ -6,6 +6,7 @@ public class AnimationEventHandler : MonoBehaviour
 {
     public BoxCollider2D col;
     public GameObject go;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,10 @@ public class AnimationEventHandler : MonoBehaviour
     {
         
         Destroy(go);
+    }
+
+    public void DisplayEndMenu()
+    {
+        go.GetComponent<CharacterData>().eventDeath.Invoke();
     }
 }

@@ -9,6 +9,7 @@ public class ScoreRegister : MonoBehaviour
     public GameObject player;
     public CharacterData charData;
     public TMP_Text scoreText;
+    public TMP_Text endScoreText;
     public double HeightScore;
     public double TotalScore;
 
@@ -32,6 +33,7 @@ public class ScoreRegister : MonoBehaviour
                 HeightScore = Mathf.Max((int)Math.Round(player.transform.position.y) * 2,(float)HeightScore);
                 TotalScore = HeightScore + charData.score;
                 scoreText.text = TotalScore.ToString();
+                endScoreText.text = TotalScore.ToString();
             }
         }
         

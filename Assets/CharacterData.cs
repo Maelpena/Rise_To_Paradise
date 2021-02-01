@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterData : MonoBehaviour
 {
+    public UnityEvent eventDeath;
     public Vector2 velocity;
     public int life;
     public int damage;
@@ -35,5 +37,6 @@ public class CharacterData : MonoBehaviour
     {
         if(GetComponent<PlayerMovement>() != null) GetComponent<PlayerMovement>().Die();
         if(GetComponent<EnemyMovement>() != null) GetComponent<EnemyMovement>().Die();
+        
     }
 }
