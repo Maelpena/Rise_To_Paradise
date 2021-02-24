@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public int dir = 1;
     public float speed = 2.85f;
     public float maxSpeed = 2.85f;
-    public float jumpSpeed = 8.85f;
+    public float jumpSpeed = 8.95f;
     public float maxWallSlideSpeed = 2.50f;
     public Rigidbody2D rb;
     public bool isGrounded;
