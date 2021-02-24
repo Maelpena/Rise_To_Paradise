@@ -6,6 +6,7 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private bool isJumpingUp = false;
     public int dir = 1;
     public float speed = 2.85f;
     public float maxSpeed = 2.85f;
@@ -27,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public Transform feetPos;
     private CharacterData charData;
+    public float powerUpCoolDown = 0;
+    private bool isPowerUp = false;
+    public bool isShield = false;
+    public bool isInvincible = false;
+
 
     public enum STATES {Walk, Jump,Fall, WallSlide, SecondJump };
     string[] StatesSTab = new string[] { "Walk", "Jump", "Fall", "WallSlide","SecondJump" };
@@ -35,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public int myLastDir;
     public bool isAlive = true;
     // Start is called before the first frame update
+
     void Start()
     {
         charData = GetComponent<CharacterData>();
@@ -45,11 +52,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (powerUpCoolDown > 0)
+        {
+            powerUpCoolDown -= Time.deltaTime;
+        } else if (powerUpCoolDown < 0)
+        {
+            powerUpCoolDown = 0;
+            resetPowerUp();
+        }
+
         if (isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 PerformAction();
             }
             Animate();
@@ -280,6 +295,49 @@ public class PlayerMovement : MonoBehaviour
             anim.Play("Die" + "_l");
         }
     }
+
+    public void PickUpPowerUp(string type, int amount, float time)
+    {
+        Debug.Log("Power Up");
+        switch (type)
+        {
+            case "bullet_speed":
+                resetPowerUp();
+                GetComponent<WeaponManager>().ActualWeapon.setSpeedBonus(amount);
+                break;
+            case "bullet_size":
+                resetPowerUp();
+                GetComponent<WeaponManager>().ActualWeapon.setSizeBonus(amount);
+                break;
+            case "shield":
+                resetPowerUp();
+                isShield = true;
+                break;
+            case "double_bullet":
+                resetPowerUp();
+                GetComponent<WeaponManager>().ActualWeapon.setDoubleBullet(true);
+                break;
+            case "invincible":
+                resetPowerUp();
+                isInvincible = true;
+                break;
+            default:
+                break;
+        }
+        powerUpCoolDown = time;
+    }
+
+    public void resetPowerUp()
+    {
+        GetComponent<WeaponManager>().ActualWeapon.setSpeedBonus(0);
+        GetComponent<WeaponManager>().ActualWeapon.setSizeBonus(0);
+        isShield = false;
+        GetComponent<WeaponManager>().ActualWeapon.setDoubleBullet(false);
+        isInvincible = false;
+
+
+    }
+
     private void Animate()
     {
         if(!isWallSlide && !isGrounded && charData.velocity.y < 0)

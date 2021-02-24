@@ -9,17 +9,21 @@ public class MoveProjectile : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public CharacterData ownerCharData;
+    public int sizeBonus;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-            rb.MovePosition(new Vector2(speed * dir * Time.deltaTime + transform.position.x, transform.position.y));
+
+        rb.MovePosition(new Vector2(speed * dir * Time.deltaTime + transform.position.x , transform.position.y));
+        transform.localScale = new Vector3(1 + sizeBonus, 1 + sizeBonus, 1 + sizeBonus);
     }
     public void SetWay(bool isLeft)
     {
@@ -36,8 +40,7 @@ public class MoveProjectile : MonoBehaviour
         {
             ownerCharData.score += collision.gameObject.GetComponent<CharacterData>().score;
             anim.Play("Hitting");
-        }
-        else
+        } else if (!collision.gameObject.tag.Equals("Projectile"))
         {
             anim.Play("Splashing");
         }

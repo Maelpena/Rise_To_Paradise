@@ -88,15 +88,44 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+/*        Debug.Log(collision.gameObject.GetComponent<PlayerMovement>().isShield);
+*/
         if (collision.gameObject.tag.Equals("Player"))
         {
-            collision.gameObject.GetComponent<CharacterData>().takeDamage(charData.damage);
+
+            if (!collision.gameObject.GetComponent<PlayerMovement>().isShield && !collision.gameObject.GetComponent<PlayerMovement>().isInvincible)
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().Die();
+            } else if(collision.gameObject.GetComponent<PlayerMovement>().isShield)
+            {
+                GetComponent<CharacterData>().takeDamage(1);
+                collision.gameObject.GetComponent<PlayerMovement>().isShield = false;
+                collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0;
+            } else
+            {
+                GetComponent<CharacterData>().takeDamage(1);
+            }
+
+        }
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            if (!collision.gameObject.GetComponent<PlayerMovement>().isShield)
+            {
+                collision.gameObject.GetComponent<CharacterData>().takeDamage(charData.damage);
+            } else
+            {
+                GetComponent<CharacterData>().takeDamage(1);
+                collision.gameObject.GetComponent<PlayerMovement>().isShield = false;
+                collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0; ;
+
+            }
+
         }
     }
     public void Die()
     {
         isAlive = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         if (dir > 0)
         {
             anim.Play("Die" + "_r");

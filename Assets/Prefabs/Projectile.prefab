@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 338061687974811361}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,6 +53,8 @@ MonoBehaviour:
   dir: 1
   rb: {fileID: 0}
   anim: {fileID: 0}
+  ownerCharData: {fileID: 0}
+  sizeBonus: 0
 --- !u!212 &876421681340091680
 SpriteRenderer:
   m_ObjectHideFlags: 0
