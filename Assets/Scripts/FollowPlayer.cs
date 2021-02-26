@@ -17,7 +17,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if(Player != null)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, Player.transform.position.y, gameObject.transform.position.z);
+            transform.position = new Vector3(gameObject.transform.position.x, Player.transform.position.y, gameObject.transform.position.z);
         }        
 
         if (shakeCoolDown > 0)
@@ -28,14 +28,14 @@ public class FollowPlayer : MonoBehaviour
         if (shakeCoolDown < 0)
         {
             shakeCoolDown = 0;
-            transform.position = new Vector3(1, transform.position.y, transform.position.z);
+            transform.position = new Vector3(1, Player.transform.position.y, transform.position.z);
         }
 
     }
 
     public void shakeScreen()
     {
-        Vector3 randomPoint = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y + Random.Range(-0.1f, 0.1f), transform.position.z);
+        Vector3 randomPoint = new Vector3(1 + Random.Range(-0.1f, 0.1f), Player.transform.position.y + Random.Range(-0.1f, 0.1f), transform.position.z);
         transform.position = randomPoint;
     }
 }
