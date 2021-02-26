@@ -18,8 +18,7 @@ public class FollowPlayer : MonoBehaviour
         if(Player != null)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, Player.transform.position.y, gameObject.transform.position.z);
-        }
-        
+        }        
 
         if (shakeCoolDown > 0)
         {
@@ -31,6 +30,7 @@ public class FollowPlayer : MonoBehaviour
             shakeCoolDown = 0;
             transform.position = new Vector3(1, transform.position.y, transform.position.z);
         }
+
     }
 
     public void shakeScreen()
