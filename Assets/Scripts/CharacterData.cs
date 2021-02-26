@@ -35,8 +35,17 @@ public class CharacterData : MonoBehaviour
 
     private void die()
     {
-        if(GetComponent<PlayerMovement>() != null) GetComponent<PlayerMovement>().Die();
-        if(GetComponent<EnemyMovement>() != null) GetComponent<EnemyMovement>().Die();
-        
+        if (GetComponent<PlayerMovement>() != null)
+        {
+            GetComponent<PlayerMovement>().Die();
+            FollowPlayer.shakeCoolDown = 1f;
+
+        }
+        if (GetComponent<EnemyMovement>() != null)
+        {
+            GetComponent<EnemyMovement>().Die();
+            FollowPlayer.shakeCoolDown = 0.2f;
+
+        }
     }
 }
