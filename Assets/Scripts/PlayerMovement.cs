@@ -15,7 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public bool isGrounded;
     public bool isWallSlide;
-    private float gravity = -25.0f;
+    private float gravity = -50.0f;
+    private float Normalgravity = -50.0f;
+    private float Jumpgravity = -23.0f;
+    private float maxGravitySpeed = -9.0f;
     private float modifier = 1.0f;
     private int nbJumpMax = 2;
     private int nbJumpLeft = 0;
@@ -67,6 +70,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 PerformAction();
             }
+            if (myState == STATES.Jump || (myState == STATES.SecondJump))
+            {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    gravity = Jumpgravity;
+                }
+                else
+                {
+                    gravity = Normalgravity;
+                }
+            }
+            else
+            {
+                gravity = Normalgravity;
+            }
+            
+                
             Animate();
         }      
     }
@@ -89,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded)
         {
             charData.velocity.y = charData.velocity.y + gravity * Time.deltaTime * modifier;
+            charData.velocity.y = Mathf.Max(charData.velocity.y, maxGravitySpeed);
             if (isWallSlide)
             {
                 if (charData.velocity.y < -maxWallSlideSpeed)
