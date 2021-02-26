@@ -14,6 +14,7 @@ public class CollisionScript : MonoBehaviour
     public List<ContactPoint2D> listContacts = new List<ContactPoint2D>();
     public List<Vector2> lvContacts = new List<Vector2>();
     public List<Collider2D> lvColliders = new List<Collider2D>();
+    public LayerMask lMaskCollision;
     void Start()
     {
 
@@ -47,66 +48,77 @@ public class CollisionScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 newHit = new Vector2(0, 0);
-        foreach (ContactPoint2D contact in collision.contacts)
-        {
-            newHit = CheckThisContact(contact);
-
-            if (newHit != new Vector2(0, 0))
+        if (lMaskCollision == (lMaskCollision | (1 << collision.gameObject.layer))) {
+            foreach (ContactPoint2D contact in collision.contacts)
             {
-                TryAddNewHitAndCallEvent(newHit,contact.collider); 
+                newHit = CheckThisContact(contact);
+
+                if (newHit != new Vector2(0, 0))
+                {
+                    TryAddNewHitAndCallEvent(newHit, contact.collider);
+                }
             }
         }
+        
     }
-    
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         CheckForOldCollisions(collision);
-        foreach (ContactPoint2D contact in collision.contacts)
+        if (lMaskCollision == (lMaskCollision | (1 << collision.gameObject.layer)))
         {
-            Vector2 zHit = CheckThisContact(contact);
-            if (zHit != new Vector2(0, 0))
+            foreach (ContactPoint2D contact in collision.contacts)
             {
-                bool isContactRegistered = false;
-                for (int i = 0; i < lvContacts.Count; i++)
+                Vector2 zHit = CheckThisContact(contact);
+                if (zHit != new Vector2(0, 0))
                 {
-
+                    bool isContactRegistered = false;
+                    for (int i = 0; i < lvContacts.Count; i++)
                     {
-                        if (Vector2.Angle(lvContacts[i], zHit) <= 0.1f)
+
                         {
-                            isContactRegistered = true;
+                            if (Vector2.Angle(lvContacts[i], zHit) <= 0.1f)
+                            {
+                                isContactRegistered = true;
+                            }
+                        }
+
+                    }
+
+                    if (!isContactRegistered)
+                    {
+                        Vector2 newHit = CheckThisContact(contact);
+                        if (newHit != new Vector2(0, 0))
+                        {
+                            TryAddNewHitAndCallEvent(newHit, contact.collider);
+
                         }
                     }
-
                 }
 
-                if (!isContactRegistered)
-                {
-                    Vector2 newHit = CheckThisContact(contact);
-                    if (newHit != new Vector2(0, 0))
-                    {
-                        TryAddNewHitAndCallEvent(newHit, contact.collider);
-
-                    }
-                }
             }
-                
-        }       
+
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (lvColliders.Count > 0)
+        if (lMaskCollision == (lMaskCollision | (1 << collision.gameObject.layer)))
         {
-            for (int i = lvColliders.Count-1; i >= 0; i--)
+            if (lvColliders.Count > 0)
             {
-                if (collision.collider == lvColliders[i])
+                for (int i = lvColliders.Count - 1; i >= 0; i--)
                 {
-                    lvContacts.RemoveAt(i);
-                    lvColliders.RemoveAt(i);
+                    if (collision.collider == lvColliders[i])
+                    {
+                        lvContacts.RemoveAt(i);
+                        lvColliders.RemoveAt(i);
+                    }
                 }
+
             }
-        
-        }        
+        }
+            
     }
     private Vector2 CheckThisContact(ContactPoint2D contact)
     {
