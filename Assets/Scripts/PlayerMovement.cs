@@ -15,10 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public bool isGrounded;
     public bool isWallSlide;
-    private float gravity = -50.0f;
-    private float Normalgravity = -50.0f;
+    private float gravity = -55.0f;
+    private float Normalgravity = -55.0f;
     private float Jumpgravity = -23.0f;
-    private float maxGravitySpeed = -9.0f;
+    private float maxGravitySpeed = -8.5f;
     private float modifier = 1.0f;
     private int nbJumpMax = 2;
     private int nbJumpLeft = 0;

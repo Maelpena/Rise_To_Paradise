@@ -18,7 +18,7 @@ public class FollowPlayer : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, Player.transform.position.y, gameObject.transform.position.z);
         }
-        shakeScreen();
+        //shakeScreen();
     }
 
     public void shakeScreen()
