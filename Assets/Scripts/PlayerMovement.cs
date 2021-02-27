@@ -6,7 +6,6 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool isJumpingUp = false;
     public int dir = 1;
     public float speed = 2.85f;
     public float maxSpeed = 2.85f;
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPos;
     private CharacterData charData;
     public float powerUpCoolDown = 0;
-    private bool isPowerUp = false;
+    //private bool isPowerUp = false;
     public bool isShield = false;
     public bool isInvincible = false;
 
@@ -319,7 +318,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void PickUpPowerUp(string type, int amount, float time)
     {
-        Debug.Log("Power Up");
         switch (type)
         {
             case "bullet_speed":

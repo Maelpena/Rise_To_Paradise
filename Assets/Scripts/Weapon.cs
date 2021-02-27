@@ -32,7 +32,6 @@ public class Weapon : MonoBehaviour
     public void setSizeBonus(int sizeBonus)
     {
         ballSizeBonus = sizeBonus;
-        Debug.Log(sizeBonus + " size bonus");
     }
     public void setDoubleBullet(bool doubleBullet)
     {

@@ -6,7 +6,6 @@ public class LevelGeneratorScript : MonoBehaviour
 {
     public List<GameObject> lAllLevelsPart = new List<GameObject>();
     public List<GameObject> lInGameLevelsPart = new List<GameObject>();
-    public List<PowerUp> powerUps = new List<PowerUp>();
     public int nbMaxLevelPartInGame = 6;
     public int nbPlayerOnForDestroyOldParts = 3;
     public Transform Player;

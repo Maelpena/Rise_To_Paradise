@@ -99,8 +99,13 @@ public class EnemyMovement : MonoBehaviour
             } else if(collision.gameObject.GetComponent<PlayerMovement>().isShield)
             {
                 GetComponent<CharacterData>().takeDamage(1);
-                collision.gameObject.GetComponent<PlayerMovement>().isShield = false;
-                collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0;
+                if (collision.gameObject.GetComponent<PlayerMovement>())
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>().isShield = false;
+                    collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0;
+                    collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0;
+                }
+                
             } else
             {
                 GetComponent<CharacterData>().takeDamage(1);

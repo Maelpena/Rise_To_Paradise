@@ -23,9 +23,8 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Debug.Log("mamamam");
             collision.gameObject.GetComponent<PlayerMovement>().PickUpPowerUp(bonusType, bonusAmount, bonusTime);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
    
