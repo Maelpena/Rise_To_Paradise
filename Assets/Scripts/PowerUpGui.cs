@@ -22,18 +22,23 @@ public class PowerUpGui : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<PlayerMovement>().powerUpCoolDown > 0)
+        if(player!= null)
         {
-            float filledPercent = player.GetComponent<PlayerMovement>().powerUpCoolDown / powerUp.bonusTime;
+            if (player.GetComponent<PlayerMovement>().powerUpCoolDown > 0)
+            {
+                float filledPercent = player.GetComponent<PlayerMovement>().powerUpCoolDown / powerUp.bonusTime;
 
-            BG_powerUpSprite.GetComponent<Image>().fillAmount = 1 - filledPercent;
-            Debug.Log(filledPercent);
-        } else
-        {
-            powerUpSprite.enabled = false;
-            BG_powerUpSprite.GetComponent<Image>().enabled = false;
+                BG_powerUpSprite.GetComponent<Image>().fillAmount = 1 - filledPercent;
+                Debug.Log(filledPercent);
+            }
+            else
+            {
+                powerUpSprite.enabled = false;
+                BG_powerUpSprite.GetComponent<Image>().enabled = false;
 
+            }
         }
+        
     }
 
     public void SetPowerUp(PowerUp newPowerUp)
