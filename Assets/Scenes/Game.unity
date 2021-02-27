@@ -1033,7 +1033,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_Origin: {x: -3, y: -2, z: 0}
   m_Size: {x: 8, y: 14, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -8841,7 +8841,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_Origin: {x: -16, y: -12, z: 0}
   m_Size: {x: 34, y: 29, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -10651,7 +10651,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_Origin: {x: -11, y: -7, z: 0}
   m_Size: {x: 20, y: 24, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -10912,7 +10912,7 @@ MonoBehaviour:
   - {fileID: 8780794516003645404, guid: 6e4b7fcad3dd9f04299c8af86e527f8d, type: 3}
   lInGameLevelsPart:
   - {fileID: 239140179}
-  nbMaxLevelPartInGame: 7
+  nbMaxLevelPartInGame: 50
   nbPlayerOnForDestroyOldParts: 3
   Player: {fileID: 1151470476}
   indexPlayerIsOn: 0
@@ -10929,6 +10929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455e6e811def7254f840678820cb2649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDied:
+    m_PersistentCalls:
+      m_Calls: []
   powerUps:
   - {fileID: 846332648798335019, guid: 1a8fcd83e4781c64c8ee2e1c2ee5385a, type: 3}
   - {fileID: 1724778251725233973, guid: 5bf289a11f017b04d86655719e05e143, type: 3}

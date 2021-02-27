@@ -4255,6 +4255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3466839948262143669}
   - component: {fileID: 4432554256369856119}
+  - component: {fileID: -8650266725836046955}
   m_Layer: 9
   m_Name: LP_Hall
   m_TagString: Floor
@@ -4293,6 +4294,25 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &-8650266725836046955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8780794516003645404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87297aa4ab5db2f4abbacaeb108fc6c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileMaps:
+  - {fileID: 6908406953678781205}
+  - {fileID: 8331874190128838544}
+  - {fileID: 8779492131478342958}
+  TM_obstacle: {fileID: 6908406953678781205}
+  TM_oneSidePlateform: {fileID: 8331874190128838544}
+  TM_BackGround: {fileID: 8779492131478342958}
 --- !u!1001 &1577798296485405431
 PrefabInstance:
   m_ObjectHideFlags: 0

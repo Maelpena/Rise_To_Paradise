@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class LevelGeneratorScript : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class LevelGeneratorScript : MonoBehaviour
     public Transform Player;
     public int indexPlayerIsOn = 0;
     public bool isAlreadySpawning = false;
+    private float brightness = 0.01f;
+    private float blueness = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +32,29 @@ public class LevelGeneratorScript : MonoBehaviour
 
     IEnumerator SpawnLevelPart(GameObject levelPart)
     {
-        if(lInGameLevelsPart.Count < nbMaxLevelPartInGame)
+        if (lInGameLevelsPart.Count < nbMaxLevelPartInGame)
         {
             GameObject LV;
             LV = Instantiate(levelPart);
             LV.transform.position = lInGameLevelsPart[lInGameLevelsPart.Count - 1].GetComponentInChildren<EndOfLevel>().transform.position;
+
+            foreach (GameObject tilemap in LV.GetComponent<LevelPart>().TileMaps)
+            {
+                tilemap.GetComponent<Tilemap>().color = new Color(0.35f + brightness - blueness, 0.35f + brightness, 0.35f + brightness, 255f);
+            }
+            if (brightness + 0.025f <= 0.65f )
+            {
+                brightness += 0.025f;
+            } else if (blueness < 0.5f )
+            {
+                blueness += 0.01f;
+                brightness = 0.65f;
+            } else
+            {
+                brightness = 0.65f;
+                blueness = 0.5f;
+            }
+            Debug.Log(LV.GetComponent<LevelPart>().TM_oneSidePlateform.GetComponent<Tilemap>().color);
             lInGameLevelsPart.Add(LV);
             
         }
