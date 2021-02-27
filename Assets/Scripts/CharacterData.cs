@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class EventEnemyDeath : UnityEvent<float,Vector2,GameObject> { }
 public class CharacterData : MonoBehaviour
 {
-    public static EventEnemyDeath EventEnemyDeath = new EventEnemyDeath();
+    public static EventEnemyDeath eventEnemyDeath = new EventEnemyDeath();
     public UnityEvent eventDeath;
     public Vector2 velocity;
     public int life;
@@ -49,7 +49,7 @@ public class CharacterData : MonoBehaviour
         {
             GetComponent<EnemyMovement>().Die();
             FollowPlayer.shakeCoolDown = 0.2f;
-            EventEnemyDeath.Invoke(score,gameObject.transform.position,transform.parent.gameObject);
+            eventEnemyDeath.Invoke(score,gameObject.transform.position,transform.parent.gameObject);
 
         }
     }
