@@ -10929,7 +10929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455e6e811def7254f840678820cb2649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUps:
+  baseLuckSpawnItem: 5
+  CurrentLuck: 5
+  LuckPercent: 100
+  lPowerUps:
   - {fileID: 846332648798335019, guid: 1a8fcd83e4781c64c8ee2e1c2ee5385a, type: 3}
   - {fileID: 1724778251725233973, guid: 5bf289a11f017b04d86655719e05e143, type: 3}
   - {fileID: 2670273932242199669, guid: 95b6d57d98ffb374d89c837b41fee1be, type: 3}
@@ -12663,6 +12666,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1724778251725233969, guid: 5bf289a11f017b04d86655719e05e143,
+        type: 3}
+      propertyPath: bonusAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1724778251725233971, guid: 5bf289a11f017b04d86655719e05e143,
         type: 3}
       propertyPath: m_RootOrder
@@ -12955,6 +12963,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 861258807232067297, guid: 53bf3e291717a1f49a48f447e468e331,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 861258807232067299, guid: 53bf3e291717a1f49a48f447e468e331,
         type: 3}
       propertyPath: Player
@@ -12965,6 +12978,11 @@ PrefabInstance:
       propertyPath: charData
       value: 
       objectReference: {fileID: 1570845081}
+    - target: {fileID: 3628643386485666769, guid: 53bf3e291717a1f49a48f447e468e331,
+        type: 3}
+      propertyPath: IsPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3628643386485666778, guid: 53bf3e291717a1f49a48f447e468e331,
         type: 3}
       propertyPath: m_Name

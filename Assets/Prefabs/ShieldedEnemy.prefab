@@ -195,7 +195,8 @@ MonoBehaviour:
   velocity: {x: 1, y: 1}
   life: 1
   damage: 1
-  score: 0
+  score: 50
+  IsPlayer: 0
 --- !u!114 &8806660193361158046
 MonoBehaviour:
   m_ObjectHideFlags: 0
