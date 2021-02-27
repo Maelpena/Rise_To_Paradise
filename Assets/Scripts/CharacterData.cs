@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+public class EventEnemyDeath : UnityEvent<float,Vector2,GameObject> { }
 public class CharacterData : MonoBehaviour
 {
+    public static EventEnemyDeath EventEnemyDeath = new EventEnemyDeath();
     public UnityEvent eventDeath;
     public Vector2 velocity;
     public int life;
     public int damage;
     public int score;
+    public bool IsPlayer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void takeDamage(int damage)
     {
         life -= damage;
-        if ( life <= 0)
+        if (life <= 0)
         {
             die();
         }
@@ -35,16 +39,17 @@ public class CharacterData : MonoBehaviour
 
     private void die()
     {
-        if (GetComponent<PlayerMovement>() != null)
+        if (IsPlayer)
         {
             GetComponent<PlayerMovement>().Die();
             FollowPlayer.shakeCoolDown = 1f;
 
         }
-        if (GetComponent<EnemyMovement>() != null)
+        else
         {
             GetComponent<EnemyMovement>().Die();
             FollowPlayer.shakeCoolDown = 0.2f;
+            EventEnemyDeath.Invoke(score,gameObject.transform.position,transform.parent.gameObject);
 
         }
     }
