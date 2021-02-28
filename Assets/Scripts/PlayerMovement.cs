@@ -6,6 +6,7 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public ParticleSystem playerParticleSystem;
     public int dir = 1;
     public float speed = 2.85f;
     public float maxSpeed = 2.85f;
@@ -53,7 +54,11 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if (!isGrounded)
+        {
+            playerParticleSystem.Play();
+        }
         if (powerUpCoolDown > 0)
         {
             powerUpCoolDown -= Time.deltaTime;
