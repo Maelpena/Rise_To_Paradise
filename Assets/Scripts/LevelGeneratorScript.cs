@@ -54,7 +54,6 @@ public class LevelGeneratorScript : MonoBehaviour
                 brightness = 0.65f;
                 blueness = 0.5f;
             }
-            Debug.Log(LV.GetComponent<LevelPart>().TM_oneSidePlateform.GetComponent<Tilemap>().color);
             lInGameLevelsPart.Add(LV);
             
         }

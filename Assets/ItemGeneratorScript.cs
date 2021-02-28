@@ -26,12 +26,10 @@ public class ItemGeneratorScript : MonoBehaviour
 
     public void EnemyDied(float score,Vector2 position,GameObject Levelpart)
     {
-        Debug.Log("EnemyDied " + score);
         float luckValue = 0.0f;
         luckValue = Random.Range(0.0f, LuckPercent);
         if (luckValue <= CurrentLuck)
         {
-            Debug.Log("SPAWN POWER UP");
             SpawnPowerup(position,Levelpart);
             CurrentLuck = baseLuckSpawnItem;
         }

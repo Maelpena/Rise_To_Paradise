@@ -29,7 +29,6 @@ public class PowerUpGui : MonoBehaviour
                 float filledPercent = player.GetComponent<PlayerMovement>().powerUpCoolDown / powerUp.bonusTime;
 
                 BG_powerUpSprite.GetComponent<Image>().fillAmount = 1 - filledPercent;
-                Debug.Log(filledPercent);
             }
             else
             {
