@@ -1829,6 +1829,10 @@ MonoBehaviour:
   - {fileID: 6908406953678781205}
   - {fileID: 8331874190128838544}
   - {fileID: 8982811228093091614}
+  spawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   TM_obstacle: {fileID: 6908406953678781205}
   TM_oneSidePlateform: {fileID: 8331874190128838544}
   TM_BackGround: {fileID: 8982811228093091614}

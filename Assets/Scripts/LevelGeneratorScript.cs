@@ -54,6 +54,19 @@ public class LevelGeneratorScript : MonoBehaviour
                 brightness = 0.65f;
                 blueness = 0.5f;
             }
+
+           /* foreach (GameObject spawn in levelPart.GetComponent<LevelPart>().spawnPositions)
+            {
+                Enemie e = new Enemie()
+                    e.transform = spawn.transform
+                Random 0 < 1
+                    if random < spawnLuck
+                    Enemie .instanciate
+                        Enemie.transform = spawn;
+            }
+
+            spawnLuck += 0.1;
+           */
             lInGameLevelsPart.Add(LV);
             
         }

@@ -3654,6 +3654,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87297aa4ab5db2f4abbacaeb108fc6c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TileMaps: []
+  spawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   TM_obstacle: {fileID: 6908406953678781205}
   TM_oneSidePlateform: {fileID: 8331874190128838544}
   TM_BackGround: {fileID: 5846100488497738227}
