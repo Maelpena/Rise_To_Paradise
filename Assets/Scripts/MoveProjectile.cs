@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveProjectile : MonoBehaviour
 {
     public float speed = 7.0f;
-    public int dir = 1;
+    public float dir = 1;
     public Rigidbody2D rb;
     public Animator anim;
     public CharacterData ownerCharData;
@@ -32,6 +32,8 @@ public class MoveProjectile : MonoBehaviour
                 GetComponent<SpriteRenderer>().flipX = true;
                 dir = -1;
         }
+        transform.position = new Vector2(transform.position.x + dir/2, transform.position.y);
+
     }
     public void Hit(Collider2D collision)
     {
