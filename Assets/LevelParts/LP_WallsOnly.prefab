@@ -5494,7 +5494,10 @@ MonoBehaviour:
   - {fileID: 6908406953678781205}
   - {fileID: 8331874190128838544}
   - {fileID: 3399274781053230609}
-  spawnPositions: []
+  spawnPositions:
+  - {fileID: 5915160117405180}
+  - {fileID: 368671310923405038}
+  - {fileID: 5953450895160377725}
   TM_obstacle: {fileID: 6908406953678781205}
   TM_oneSidePlateform: {fileID: 8331874190128838544}
   TM_BackGround: {fileID: 3399274781053230609}

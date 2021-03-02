@@ -7,6 +7,7 @@ public class LevelGeneratorScript : MonoBehaviour
 {
     public List<GameObject> lAllLevelsPart = new List<GameObject>();
     public List<GameObject> lInGameLevelsPart = new List<GameObject>();
+    public List<GameObject> ListMob = new List<GameObject>();
     public int nbMaxLevelPartInGame = 6;
     public int nbPlayerOnForDestroyOldParts = 3;
     public Transform Player;
@@ -55,20 +56,25 @@ public class LevelGeneratorScript : MonoBehaviour
                 blueness = 0.5f;
             }
 
-           /* foreach (GameObject spawn in levelPart.GetComponent<LevelPart>().spawnPositions)
+            float DifficultyFromPlayerHeight = indexPlayerIsOn / 10;
+            GameObject ennemy = new GameObject();
+            foreach (GameObject spawn in levelPart.GetComponent<LevelPart>().spawnPositions)
             {
-                Enemie e = new Enemie()
-                    e.transform = spawn.transform
-                Random 0 < 1
-                    if random < spawnLuck
-                    Enemie .instanciate
-                        Enemie.transform = spawn;
+                if (Random.Range(0, 100) + DifficultyFromPlayerHeight > 70)
+                {
+                    if (Random.Range(0, 100) > 70)
+                    {
+                        ennemy = Instantiate(ListMob[1], LV.transform);
+                        ennemy.transform.position = spawn.transform.position;
+                    }
+                    else
+                    {
+                        ennemy = Instantiate(ListMob[0], LV.transform);
+                        ennemy.transform.position = spawn.transform.position;
+                    }
+                }
             }
-
-            spawnLuck += 0.1;
-           */
             lInGameLevelsPart.Add(LV);
-            
         }
         isAlreadySpawning = false;
         yield return null;
