@@ -56,7 +56,7 @@ public class LevelGeneratorScript : MonoBehaviour
                 blueness = 0.5f;
             }
 
-            float DifficultyFromPlayerHeight = indexPlayerIsOn / 10;
+            float DifficultyFromPlayerHeight = indexPlayerIsOn / 8;
             GameObject ennemy = new GameObject();
             foreach (GameObject spawn in levelPart.GetComponent<LevelPart>().spawnPositions)
             {
@@ -64,13 +64,15 @@ public class LevelGeneratorScript : MonoBehaviour
                 {
                     if (Random.Range(0, 100) > 70)
                     {
-                        ennemy = Instantiate(ListMob[1], LV.transform);
-                        ennemy.transform.position = spawn.transform.position;
+                        ennemy = Instantiate(ListMob[0], LV.transform);
+                        ennemy.transform.position = new Vector2( 0, 0);
+                        ennemy.transform.position = spawn.transform.position + LV.transform.position;
                     }
                     else
                     {
-                        ennemy = Instantiate(ListMob[0], LV.transform);
-                        ennemy.transform.position = spawn.transform.position;
+                        ennemy = Instantiate(ListMob[1], LV.transform);
+                        ennemy.transform.position = new Vector2(0, 0);
+                        ennemy.transform.position = spawn.transform.position + LV.transform.position;
                     }
                 }
             }

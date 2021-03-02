@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11360,9 +11360,6 @@ MonoBehaviour:
   - {fileID: 8780794516003645404, guid: 6e4b7fcad3dd9f04299c8af86e527f8d, type: 3}
   lInGameLevelsPart:
   - {fileID: 239140179}
-  ListMob:
-  - {fileID: 2379278341790794825}
-  - {fileID: 6571719163337615560}
   nbMaxLevelPartInGame: 6
   nbPlayerOnForDestroyOldParts: 3
   Player: {fileID: 1151470476}
@@ -18331,12 +18328,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0dfddad457905840a830d9640388571, type: 3}
---- !u!1 &2379278341790794825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2379278342556465023, guid: c0dfddad457905840a830d9640388571,
-    type: 3}
-  m_PrefabInstance: {fileID: 2379278341790794824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2379278342667958104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8806660193361158047, guid: 7ba36804b7f47e24499898396a7a1ed1,
@@ -18683,9 +18674,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ba36804b7f47e24499898396a7a1ed1, type: 3}
---- !u!1 &6571719163337615560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8806660193361158036, guid: 7ba36804b7f47e24499898396a7a1ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6571719163337615559}
-  m_PrefabAsset: {fileID: 0}
