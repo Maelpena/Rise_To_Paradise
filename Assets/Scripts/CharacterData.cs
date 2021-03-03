@@ -50,7 +50,6 @@ public class CharacterData : MonoBehaviour
             GetComponent<EnemyMovement>().Die();
             FollowPlayer.shakeCoolDown = 0.2f;
             eventEnemyDeath.Invoke(score,gameObject.transform.position,transform.parent.gameObject);
-
         }
     }
 }
