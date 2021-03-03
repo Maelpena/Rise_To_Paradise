@@ -59,7 +59,6 @@ public class CollisionScript : MonoBehaviour
                 }
             }
         }
-        
     }
 
     private void OnCollisionStay2D(Collision2D collision)

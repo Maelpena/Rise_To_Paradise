@@ -11,12 +11,13 @@ public class ScoreRegister : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text endScoreText;
     public double HeightScore;
-    public double TotalScore;
+    public float TotalScore;
+    public float killScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,12 +31,23 @@ public class ScoreRegister : MonoBehaviour
         {
             if ((int)Math.Round(player.transform.position.y) > 0)
             {
-                HeightScore = Mathf.Max((int)Math.Round(player.transform.position.y) * 2,(float)HeightScore);
-                TotalScore = HeightScore + charData.score;
+                HeightScore = Mathf.Max((float)Math.Round(player.transform.position.y) * 2, (float)HeightScore);
+                TotalScore = (float)HeightScore + charData.score + killScore;
+                Debug.Log(TotalScore);
                 scoreText.text = TotalScore.ToString();
                 endScoreText.text = TotalScore.ToString();
             }
         }
-        
+
     }
+    private void OnEnable()
+    {
+        CharacterData.eventEnemyDeath.AddListener(EnemyDied);
+    }
+
+    private void EnemyDied(float score, Vector2 position, GameObject Levelpart)
+    {
+        killScore += score;
+    }
+
 }

@@ -40,7 +40,6 @@ public class MoveProjectile : MonoBehaviour
         dir = 0;
         if (collision.gameObject.tag.Equals("Enemies"))
         {
-            ownerCharData.score += collision.gameObject.GetComponent<CharacterData>().score;
             anim.Play("Hitting");
         } else if (!collision.gameObject.tag.Equals("Projectile"))
         {

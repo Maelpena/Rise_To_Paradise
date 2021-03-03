@@ -44,7 +44,6 @@ public class EnemyMovement : MonoBehaviour
         {
             Animate();
         }
-        
     }
 
     void Move()
