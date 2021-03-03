@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class Vector2Event : UnityEvent<Vector2> { }
+public class Vector2Event : UnityEvent<Vector2,Collider2D> { }
 public class CollisionScript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class CollisionScript : MonoBehaviour
         {
             lvContacts.Add(newHit);
             lvColliders.Add(collider); 
-            EnewCollision.Invoke(newHit);
+            EnewCollision.Invoke(newHit,collider);
         }
         
     }

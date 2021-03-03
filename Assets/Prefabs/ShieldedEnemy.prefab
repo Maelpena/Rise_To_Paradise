@@ -229,7 +229,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13747558, y: 0.4260445}
+  m_Size: {x: 0.1576063, y: 0.4260445}
   m_EdgeRadius: 0
 --- !u!114 &8806660193361158042
 MonoBehaviour:
@@ -249,7 +249,7 @@ MonoBehaviour:
   lvColliders: []
   lMaskCollision:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 6912
 --- !u!114 &8806660193361158043
 MonoBehaviour:
   m_ObjectHideFlags: 0

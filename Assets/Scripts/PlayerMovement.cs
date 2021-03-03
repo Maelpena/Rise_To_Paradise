@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
     }
-    private void ApplyCollision(Vector2 normalCollision )
+    private void ApplyCollision(Vector2 normalCollision,Collider2D collision)
     {
         if (normalCollision == Vector2.right || normalCollision == -Vector2.right)
         {

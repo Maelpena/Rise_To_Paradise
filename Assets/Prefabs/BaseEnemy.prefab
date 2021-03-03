@@ -205,7 +205,7 @@ MonoBehaviour:
   lvColliders: []
   lMaskCollision:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 6912
 --- !u!114 &2379278342556465008
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,11 +60,32 @@ public class EnemyMovement : MonoBehaviour
         dir = dir * -1;
     }
 
-    private void ApplyCollision(Vector2 normalCollision)
+    private void ApplyCollision(Vector2 normalCollision,Collider2D collision)
     {
         if (normalCollision == Vector2.right || normalCollision == -Vector2.right)
         {
-            ChangeDirection();
+            if(collision.gameObject.layer == 11)
+            {
+                if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EnemyMovement>().dir != dir)
+                {
+                    collision.gameObject.GetComponent<EnemyMovement>().ChangeDirection();
+                    ChangeDirection();
+                }
+                else if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EnemyMovement>().speed > speed)
+                {
+                    collision.gameObject.GetComponent<EnemyMovement>().ChangeDirection();
+                }
+                else
+                {
+                    ChangeDirection();
+                }
+            }       
+            else
+            {
+                ChangeDirection();
+            }
+            
+            
         }
     }
 
