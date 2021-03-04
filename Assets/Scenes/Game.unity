@@ -11133,8 +11133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455e6e811def7254f840678820cb2649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseLuckSpawnItem: 5
-  CurrentLuck: 5
+  baseLuckSpawnItem: 10
+  CurrentLuck: 10
   LuckPercent: 100
   lPowerUps:
   - {fileID: 846332648798335019, guid: 1a8fcd83e4781c64c8ee2e1c2ee5385a, type: 3}

@@ -35,7 +35,7 @@ public class ItemGeneratorScript : MonoBehaviour
         }
         else
         {
-            CurrentLuck +=(score / 2) / 10;
+            CurrentLuck +=(score / 1.5f) / 10;
         }
         
     }
