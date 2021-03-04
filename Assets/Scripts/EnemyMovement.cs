@@ -9,8 +9,8 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody2D rb;
     private CharacterData charData;
     public LayerMask lmForFloor;
-    private float OffsetY = 0.50f;
-    private float OffsetX = 0.38f;
+    public float OffsetY;
+    public float OffsetX;
     public Animator anim;
     public enum STATES { Walk, Jump, Fall, SecondJump };
     string[] StatesSTab = new string[] { "Walk", "Jump", "Fall", "SecondJump" };

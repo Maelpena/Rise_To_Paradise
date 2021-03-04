@@ -255,6 +255,8 @@ MonoBehaviour:
   lmForFloor:
     serializedVersion: 2
     m_Bits: 823
+  OffsetY: 0.5
+  OffsetX: 0.38
   anim: {fileID: 0}
   myState: 0
   myLastState: 0
