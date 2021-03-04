@@ -219,7 +219,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
             isGrounded = false;
         }
         Debug.DrawRay(new Vector2(rb.position.x - OffsetX, rb.position.y - 0.40f), new Vector3(0,-OffsetY,0),Color.yellow,0.0f);
