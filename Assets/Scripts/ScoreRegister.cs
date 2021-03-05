@@ -33,7 +33,6 @@ public class ScoreRegister : MonoBehaviour
             {
                 HeightScore = Mathf.Max((float)Math.Round(player.transform.position.y) * 2, (float)HeightScore);
                 TotalScore = (float)HeightScore + charData.score + killScore;
-                Debug.Log(TotalScore);
                 scoreText.text = TotalScore.ToString();
                 endScoreText.text = TotalScore.ToString();
             }
