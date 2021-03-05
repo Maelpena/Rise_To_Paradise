@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108085506684714034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.68, y: 16.65, z: 0}
+  m_LocalPosition: {x: -3.5, y: 16.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2256963051203496678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.99, y: 4.66, z: 0}
+  m_LocalPosition: {x: -2.02, y: 12.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -157,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3024153646735405589}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.684511, y: 12.73, z: 0}
+  m_LocalPosition: {x: 2, y: 19, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3260083319805838165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 7.69, z: 0}
+  m_LocalPosition: {x: 0, y: 7.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6508197146918522827}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.01, y: 4.66, z: 0}
+  m_LocalPosition: {x: -3, y: 4.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -2233,7 +2233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7676898692211097014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.26, y: 1.63, z: -3.0214844}
+  m_LocalPosition: {x: 0, y: 1.5, z: -3.0214844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -2720,6 +2720,16 @@ MonoBehaviour:
   TM_obstacle: {fileID: 6908406953678781205}
   TM_oneSidePlateform: {fileID: 8331874190128838544}
   TM_BackGround: {fileID: 8981132154786699938}
+  lSpawnDifficulty:
+  - {x: 1, y: 0, z: 1.5, w: 0}
+  - {x: 1, y: 3.5, z: 12.5, w: 0}
+  - {x: 2, y: -3.5, z: 16.5, w: 0}
+  - {x: 2, y: 0, z: 7.5, w: 1}
+  - {x: 2, y: -3, z: 4.5, w: 0}
+  - {x: 3, y: 3, z: 12.5, w: 1}
+  - {x: 3, y: 0, z: 1.5, w: 0}
+  - {x: 3, y: -2, z: 12.5, w: 0}
+  - {x: 3, y: 2, z: 19, w: 0}
 --- !u!1 &8981132154786699938
 GameObject:
   m_ObjectHideFlags: 0

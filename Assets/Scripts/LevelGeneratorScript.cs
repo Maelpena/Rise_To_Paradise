@@ -15,6 +15,7 @@ public class LevelGeneratorScript : MonoBehaviour
     public bool isAlreadySpawning = false;
     private float brightness = 0.01f;
     private float blueness = 0f;
+    public float actualDifficulty = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,33 +57,73 @@ public class LevelGeneratorScript : MonoBehaviour
                 blueness = 0.5f;
             }
 
-            float DifficultyFromPlayerHeight = indexPlayerIsOn / 8;
-            GameObject ennemy = new GameObject();
-            foreach (GameObject spawn in levelPart.GetComponent<LevelPart>().spawnPositions)
-            {
-                if (Random.Range(0, 100) + DifficultyFromPlayerHeight > 70)
-                {
-                    if (Random.Range(0, 100) > 70)
-                    {
-                        ennemy = Instantiate(ListMob[0], LV.transform);
-                        ennemy.transform.position = new Vector2( 0, 0);
-                        ennemy.transform.position = spawn.transform.position + LV.transform.position;
-                    }
-                    else
-                    {
-                        ennemy = Instantiate(ListMob[1], LV.transform);
-                        ennemy.transform.position = new Vector2(0, 0);
-                        ennemy.transform.position = spawn.transform.position + LV.transform.position;
-                    }
-                }
-            }
+            SpawnEnemiesFollowingDifficulty(LV);
+          
             lInGameLevelsPart.Add(LV);
         }
         isAlreadySpawning = false;
         yield return null;
 
     }
+    void SpawnEnemiesFollowingDifficulty(GameObject LV)
+    {
+        UpdateDifficulty();
+        GameObject ennemyToSpawn = new GameObject();
+        List<Vector4> lSpawns = LV.GetComponent<LevelPart>().lSpawnDifficulty;
+        for (int i = 0; i < lSpawns.Count; i++)
+        {
+            if(lSpawns[i].x == actualDifficulty)
+            {
+                ennemyToSpawn = Instantiate(ListMob[Mathf.RoundToInt(lSpawns[i].w)], LV.transform);
+                ennemyToSpawn.transform.position = new Vector2(lSpawns[i].y, lSpawns[i].z); 
+                ennemyToSpawn.transform.position = ennemyToSpawn.transform.position + LV.transform.position;
+            }
+            else if(lSpawns[i].x> actualDifficulty)
+            {
+                break;
+            }
+        }
+        /*
+        foreach (GameObject spawn in LV.GetComponent<LevelPart>().spawnPositions)
+        {
+            
+            if (Random.Range(0, 100) + DifficultyFromPlayerHeight > 70)
+            {
+                if (Random.Range(0, 100) > 70)
+                {
+                    ennemy = Instantiate(ListMob[0], LV.transform);
+                    ennemy.transform.position = new Vector2(0, 0);
+                    ennemy.transform.position = spawn.transform.position + LV.transform.position;
+                }
+                else
+                {
+                    ennemy = Instantiate(ListMob[1], LV.transform);
+                    ennemy.transform.position = new Vector2(0, 0);
+                    ennemy.transform.position = spawn.transform.position + LV.transform.position;
+                }
+            }
+        }*/
+    }
 
+    void UpdateDifficulty()
+    {
+        GameObject GM = GameObject.Find("GameManager");
+        if (GM.GetComponentInParent<ScoreRegister>().TotalScore > 500)
+        {
+            Debug.Log("Difficulty 3");
+            actualDifficulty = 3;
+        }
+        else if(GM.GetComponentInParent<ScoreRegister>().TotalScore > 200)
+        {
+            Debug.Log("Difficulty 2");
+            actualDifficulty = 2;
+        }
+        else
+        {
+            Debug.Log("Difficulty 1");
+            actualDifficulty = 1;
+        }
+    }
     IEnumerator AddNewLevelPartAndDestroyOldPart ()
     {
         yield return StartCoroutine(TryRemoveOldPart());

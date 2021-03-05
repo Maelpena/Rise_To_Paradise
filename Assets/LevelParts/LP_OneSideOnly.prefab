@@ -3159,7 +3159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374051527872191646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.01, y: 3.53, z: -1.3242188}
+  m_LocalPosition: {x: 0, y: 3.53, z: -1.3242188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3466839948262143669}
@@ -4795,6 +4795,13 @@ MonoBehaviour:
   TM_obstacle: {fileID: 6908406953678781205}
   TM_oneSidePlateform: {fileID: 8331874190128838544}
   TM_BackGround: {fileID: 89428509609896473}
+  lSpawnDifficulty:
+  - {x: 1, y: 0, z: 3.5, w: 1}
+  - {x: 2, y: -2, z: 5.5, w: 0}
+  - {x: 2, y: 0, z: 1.5, w: 0}
+  - {x: 3, y: 0, z: 1.5, w: 1}
+  - {x: 3, y: 0, z: 9.5, w: 0}
+  - {x: 3, y: 3, z: 3.5, w: 1}
 --- !u!1 &8879276783629519601
 GameObject:
   m_ObjectHideFlags: 0
