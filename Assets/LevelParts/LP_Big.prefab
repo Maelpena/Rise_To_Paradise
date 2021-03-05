@@ -2729,7 +2729,7 @@ MonoBehaviour:
   - {x: 3, y: 3, z: 12.5, w: 1}
   - {x: 3, y: 0, z: 1.5, w: 0}
   - {x: 3, y: -2, z: 12.5, w: 0}
-  - {x: 3, y: 2, z: 19, w: 0}
+  - {x: 3, y: 2, z: 18.5, w: 0}
 --- !u!1 &8981132154786699938
 GameObject:
   m_ObjectHideFlags: 0

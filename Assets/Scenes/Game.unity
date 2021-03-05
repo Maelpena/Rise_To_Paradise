@@ -11177,13 +11177,14 @@ MonoBehaviour:
   lInGameLevelsPart:
   - {fileID: 239140179}
   ListMob:
-  - {fileID: 8806660193361158036, guid: 7ba36804b7f47e24499898396a7a1ed1, type: 3}
   - {fileID: 2379278342556465023, guid: c0dfddad457905840a830d9640388571, type: 3}
+  - {fileID: 8806660193361158036, guid: 7ba36804b7f47e24499898396a7a1ed1, type: 3}
   nbMaxLevelPartInGame: 6
   nbPlayerOnForDestroyOldParts: 3
   Player: {fileID: 1151470476}
   indexPlayerIsOn: 0
   isAlreadySpawning: 0
+  actualDifficulty: 1
 --- !u!114 &799261814
 MonoBehaviour:
   m_ObjectHideFlags: 0
