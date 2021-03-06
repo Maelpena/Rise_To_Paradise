@@ -30,7 +30,7 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            collision.gameObject.GetComponent<PlayerMovement>().PickUpPowerUp(bonusType, bonusAmount, bonusTime);
+            collision.gameObject.GetComponent<Player>().PickUpPowerUp(bonusType, bonusAmount, bonusTime);
             eventPickUpCollectible.Invoke(this);
 
            //PowerUpGui.Draw(this);

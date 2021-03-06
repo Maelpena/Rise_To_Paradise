@@ -15,7 +15,7 @@ public class ItemGeneratorScript : MonoBehaviour
     }
     private void OnEnable()
     {
-        CharacterData.eventEnemyDeath.AddListener(EnemyDied);
+        Enemy.eventEnemyDeath.AddListener(EnemyDied);
     }
 
     // Update is called once per frame

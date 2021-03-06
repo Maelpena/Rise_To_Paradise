@@ -22,9 +22,9 @@ public class Weapon : MonoBehaviour
     }
     public void DoAction()
     {
-        Action();
+        Shoot();
     }
-    protected virtual void Action() { }
+    public virtual void Shoot() { }
     public void setSpeedBonus(int speedBonus)
     {
         ballSpeedBonus = speedBonus;

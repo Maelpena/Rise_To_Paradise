@@ -17,7 +17,7 @@ public class VerticalWeapon : Weapon
         
     }
 
-    protected override void Action()
+    public override void Shoot()
     {
         GameObject Balle;
         Balle = Instantiate(BalleType, null);

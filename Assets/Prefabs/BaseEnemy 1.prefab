@@ -114,8 +114,8 @@ GameObject:
   - component: {fileID: 2379278342556465011}
   - component: {fileID: 2379278342556465010}
   - component: {fileID: 2379278342556465009}
-  - component: {fileID: 2379278342556465008}
   - component: {fileID: 2379278342556465013}
+  - component: {fileID: 972000148020910848}
   m_Layer: 11
   m_Name: BaseEnemy 1
   m_TagString: Enemies
@@ -200,43 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feetPos: {fileID: 2379278342163344835}
-  charData: {fileID: 2379278342556465008}
   lvContacts: []
   lvColliders: []
   lMaskCollision:
     serializedVersion: 2
     m_Bits: 6912
---- !u!114 &2379278342556465008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379278342556465023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 436b5a2aba03e404fb4042b40564f54c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 455e6e811def7254f840678820cb2649, type: 3}
-        m_MethodName: set_name
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: EnemyDied()
-          m_BoolArgument: 0
-        m_CallState: 2
-  velocity: {x: 1, y: 1}
-  life: 1
-  damage: 1
-  score: 20
-  IsPlayer: 0
 --- !u!114 &2379278342556465013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +230,22 @@ MonoBehaviour:
   myLastState: 0
   myLastDir: 0
   isAlive: 1
+--- !u!114 &972000148020910848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379278342556465023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81aebc8fd4d539a48bc3181aca059f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  life: 1
+  damage: 1
+  score: 50
 --- !u!1 &2379278342636607209
 GameObject:
   m_ObjectHideFlags: 0

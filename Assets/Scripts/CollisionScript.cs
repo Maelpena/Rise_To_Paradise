@@ -10,7 +10,6 @@ public class CollisionScript : MonoBehaviour
     // Start is called before the first frame update
     public Vector2Event EnewCollision = new Vector2Event();
     public Transform feetPos;
-    public CharacterData charData;
     public List<ContactPoint2D> listContacts = new List<ContactPoint2D>();
     public List<Vector2> lvContacts = new List<Vector2>();
     public List<Collider2D> lvColliders = new List<Collider2D>();
@@ -141,7 +140,7 @@ public class CollisionScript : MonoBehaviour
                 
             }
         }
-        else if ((contact.collider.gameObject.tag.Equals("Floor") && contact.point.y < feetPos.position.y) &&( contact.normal == Vector2.up || (Vector2.Angle(contact.normal, Vector2.up) == 0.0f)) && charData.velocity.y <= 0.0f)
+        else if ((contact.collider.gameObject.tag.Equals("Floor") && contact.point.y < feetPos.position.y) &&( contact.normal == Vector2.up || (Vector2.Angle(contact.normal, Vector2.up) == 0.0f)) && GetComponent<PlayerMovement>().velocity.y <= 0.0f)
         {
             if (!contact.collider.OverlapPoint(feetPos.position))
             {

@@ -6,12 +6,15 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Vector2 velocity;
+
     public ParticleSystem playerParticleSystem;
     public int dir = 1;
     public float speed = 2.85f;
     public float maxSpeed = 2.85f;
     public float jumpSpeed = 8.95f;
     public float maxWallSlideSpeed = 2.50f;
+
     public Rigidbody2D rb;
     public bool isGrounded;
     public bool isWallSlide;
@@ -30,11 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask lmForFloor;
     public Animator anim;
     public Transform feetPos;
-    private CharacterData charData;
-    public float powerUpCoolDown = 0;
-    //private bool isPowerUp = false;
-    public bool isShield = false;
-    public bool isInvincible = false;
+
 
 
     public enum STATES {Walk, Jump,Fall, WallSlide, SecondJump };
@@ -47,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        charData = GetComponent<CharacterData>();
         anim = GetComponentInChildren<Animator>();
         GetComponent<CollisionScript>().EnewCollision.AddListener(ApplyCollision);
     }
@@ -59,14 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerParticleSystem.Play();
         }
-        if (powerUpCoolDown > 0)
-        {
-            powerUpCoolDown -= Time.deltaTime;
-        } else if (powerUpCoolDown < 0)
-        {
-            powerUpCoolDown = 0;
-            resetPowerUp();
-        }
+       
 
         if (isAlive)
         {
@@ -109,19 +100,19 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
 
-        charData.velocity.x = dir * speed;
+        velocity.x = dir * speed;
         if (!isGrounded)
         {
-            charData.velocity.y = charData.velocity.y + gravity * Time.deltaTime * modifier;
-            charData.velocity.y = Mathf.Max(charData.velocity.y, maxGravitySpeed);
+            velocity.y = velocity.y + gravity * Time.deltaTime * modifier;
+            velocity.y = Mathf.Max(velocity.y, maxGravitySpeed);
             if (isWallSlide)
             {
-                if (charData.velocity.y < -maxWallSlideSpeed)
+                if (velocity.y < -maxWallSlideSpeed)
                 {
 
-                    if (charData.velocity.y < -maxWallSlideSpeed)
+                    if (velocity.y < -maxWallSlideSpeed)
                     {
-                        charData.velocity.y = -maxWallSlideSpeed;
+                        velocity.y = -maxWallSlideSpeed;
                     }
                 }
             }
@@ -129,11 +120,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            charData.velocity.y = 0;
+            velocity.y = 0;
         }
 
-        rb.MovePosition(new Vector2(charData.velocity.x * Time.deltaTime + transform.position.x, charData.velocity.y * Time.deltaTime + transform.position.y));
-        if (charData.velocity.y == 0) CheckForGround();
+        rb.MovePosition(new Vector2(velocity.x * Time.deltaTime + transform.position.x, velocity.y * Time.deltaTime + transform.position.y));
+        if (velocity.y == 0) CheckForGround();
         if (isWallSlide) CheckForEndOfWall();
     }
 
@@ -173,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CollideSealing()
     {
-        charData.velocity.y = 0;
+        velocity.y = 0;
     }
 
     private void NoMoreSideWall()
@@ -270,7 +261,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (MakeJump())
         {
-            gameObject.GetComponent<WeaponManager>().UseWeapon();
+           gameObject.GetComponent<Player>().Shoot();
         }
         
     }
@@ -279,7 +270,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (nbJumpLeft > 0)
         {
-            charData.velocity.y = jumpSpeed;
+            velocity.y = jumpSpeed;
             if (!isGrounded)
             {
                 myState = STATES.SecondJump;
@@ -292,7 +283,7 @@ public class PlayerMovement : MonoBehaviour
             if (isWallSlide)
             {
                 speed = maxSpeed;
-                charData.velocity.y = jumpSpeed;
+                velocity.y = jumpSpeed;
                 dir = dir * -1;
                 modifier = 1.0f;
                 isWallSlide = false;
@@ -307,7 +298,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    public void Die()
+    public void PlayDie()
     {
         isAlive = false;
         if (dir > 0)
@@ -320,50 +311,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void PickUpPowerUp(string type, int amount, float time)
-    {
-        switch (type)
-        {
-            case "bullet_speed":
-                resetPowerUp();
-                GetComponent<WeaponManager>().ActualWeapon.setSpeedBonus(amount);
-                break;
-            case "bullet_size":
-                resetPowerUp();
-                GetComponent<WeaponManager>().ActualWeapon.setSizeBonus(amount);
-                break;
-            case "shield":
-                resetPowerUp();
-                isShield = true;
-                break;
-            case "double_bullet":
-                resetPowerUp();
-                GetComponent<WeaponManager>().ActualWeapon.setDoubleBullet(true);
-                break;
-            case "invincible":
-                resetPowerUp();
-                isInvincible = true;
-                break;
-            default:
-                break;
-        }
-        powerUpCoolDown = time;
-    }
-
-    public void resetPowerUp()
-    {
-        GetComponent<WeaponManager>().ActualWeapon.setSpeedBonus(0);
-        GetComponent<WeaponManager>().ActualWeapon.setSizeBonus(0);
-        isShield = false;
-        GetComponent<WeaponManager>().ActualWeapon.setDoubleBullet(false);
-        isInvincible = false;
-
-
-    }
-
     private void Animate()
     {
-        if(!isWallSlide && !isGrounded && charData.velocity.y < 0)
+        if(!isWallSlide && !isGrounded && velocity.y < 0)
         {
             myState = STATES.Fall;
         }

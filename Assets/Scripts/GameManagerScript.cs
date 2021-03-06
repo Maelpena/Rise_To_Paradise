@@ -15,7 +15,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player.GetComponent<CharacterData>().eventDeath.AddListener(DisplayEndMenu);
+        player.GetComponent<Player>().playerDeath.AddListener(DisplayEndMenu);
     }
 
     // Update is called once per frame

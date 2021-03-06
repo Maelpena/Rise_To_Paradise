@@ -5,11 +5,9 @@ using UnityEngine;
 public class BasicWeapon : Weapon
 {
     [SerializeField] public GameObject BalleType;
-    [SerializeField] private CharacterData charData;
     // Start is called before the first frame update
     void Start()
     {
-        charData = gameObject.transform.parent.gameObject.GetComponent<CharacterData>();
     }
 
     // Update is called once per frame
@@ -18,22 +16,20 @@ public class BasicWeapon : Weapon
         
     }
 
-    protected override void Action()
+    public override void Shoot()
     {
         GameObject Balle;
         Balle = Instantiate(BalleType, null);
         Balle.transform.position = gameObject.transform.position;
-        Balle.transform.position += new Vector3(0, 0, 0);
 
-        Balle.GetComponent<MoveProjectile>().ownerCharData = charData;
         if (gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().dir < 0)
         {
             if (!gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().isWallSlide)
             {
-                Balle.GetComponent<MoveProjectile>().SetWay(false);
+                Balle.GetComponent<Bullet>().SetWay(false);
             } else
             {
-                Balle.GetComponent<MoveProjectile>().SetWay(true);
+                Balle.GetComponent<Bullet>().SetWay(true);
 
             }
         }
@@ -41,10 +37,10 @@ public class BasicWeapon : Weapon
         {
             if (gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().isWallSlide)
             {
-                Balle.GetComponent<MoveProjectile>().SetWay(false);
+                Balle.GetComponent<Bullet>().SetWay(false);
             } else
             {
-                Balle.GetComponent<MoveProjectile>().SetWay(true);
+                Balle.GetComponent<Bullet>().SetWay(true);
 
             }
         }
@@ -53,17 +49,16 @@ public class BasicWeapon : Weapon
             GameObject Balle2;
             Balle2 = Instantiate(BalleType, null);
             Balle2.transform.position = gameObject.transform.position;
-            Balle2.GetComponent<MoveProjectile>().ownerCharData = charData;
 
             if (gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().dir < 0)
             {
                 if (!gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().isWallSlide)
                 {
-                    Balle2.GetComponent<MoveProjectile>().SetWay(true);
+                    Balle2.GetComponent<Bullet>().SetWay(true);
                 }
                 else
                 {
-                    Balle2.GetComponent<MoveProjectile>().SetWay(false);
+                    Balle2.GetComponent<Bullet>().SetWay(false);
 
                 }
             }
@@ -71,17 +66,17 @@ public class BasicWeapon : Weapon
             {
                 if (gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().isWallSlide)
                 {
-                    Balle2.GetComponent<MoveProjectile>().SetWay(true);
+                    Balle2.GetComponent<Bullet>().SetWay(true);
                 }
                 else
                 {
-                    Balle2.GetComponent<MoveProjectile>().SetWay(false);
+                    Balle2.GetComponent<Bullet>().SetWay(false);
 
                 }
             }
         }
-        Balle.GetComponent<MoveProjectile>().speed += ballSpeedBonus;
-        Balle.GetComponent<MoveProjectile>().sizeBonus += ballSizeBonus;
+        Balle.GetComponent<Bullet>().speed += ballSpeedBonus;
+        Balle.GetComponent<Bullet>().sizeBonus += ballSizeBonus;
 
     }
 
