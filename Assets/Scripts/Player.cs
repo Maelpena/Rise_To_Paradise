@@ -61,6 +61,14 @@ public class Player : MonoBehaviour
                 resetPowerUp();
                 isInvincible = true;
                 break;
+            case "bullet_crossing":
+                resetPowerUp();
+                weapon.setBulletCrossing(true);
+                break;
+            case "vertical_bullet":
+                resetPowerUp();
+                weapon.setVerticalBullet(true);
+                break;
             default:
                 break;
         }
@@ -74,6 +82,9 @@ public class Player : MonoBehaviour
         isShield = false;
         weapon.setDoubleBullet(false);
         isInvincible = false;
+        weapon.setBulletCrossing(false);
+        weapon.setVerticalBullet(false);
+
 
     }
 

@@ -7,10 +7,12 @@ public class Bullet : MonoBehaviour
     public LayerMask lMaskCollision;
     private int damage = 1;
     public float speed = 7.0f;
-    public float dir = 1;
+    //public float dir = 1;
     public Rigidbody2D rb;
     public Animator anim;
     public int sizeBonus;
+    public bool bulletCrossing;
+    public Vector2 dir;
 
     void Start()
     {
@@ -20,34 +22,45 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(new Vector2(speed * dir * Time.deltaTime + transform.position.x, transform.position.y));
+        rb.MovePosition(new Vector2(speed * dir.x * Time.deltaTime + transform.position.x, speed * dir.y * Time.deltaTime + transform.position.y));
         transform.localScale = new Vector3(1 + sizeBonus, 1 + sizeBonus, 1 + sizeBonus);
     }
-    public void SetWay(bool isLeft)
+    public void SetWay(Vector2 direction)
     {
-        if (!isLeft)
+        dir = direction;
+        if (dir.x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
-            dir = -1;
+            
         }
-        transform.position = new Vector2(transform.position.x + dir / 2, transform.position.y);
+        if (dir.y > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 00, 90 );
+
+        }
+        transform.position = new Vector2(transform.position.x + dir.x / 2, transform.position.y);
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (lMaskCollision == (lMaskCollision | (1 << collision.gameObject.layer)))
         {
-            dir = 0;
-            if (collision.gameObject.tag.Equals("Enemies"))
+            
+            if (collision.gameObject.tag.Equals("Enemies") )
             {
-                anim.Play("Hitting");
                 collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                if (bulletCrossing)
+                    return;
+                anim.Play("Hitting");
             }
             else 
             {
                anim.Play("Splashing");
             }
-       }
+            dir.x = 0;
+            dir.y = 0;
+        }
     }
 }

@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask lmForFloor;
     public Animator anim;
     public Transform feetPos;
+    public bool lookAtLeft = false;
+
 
 
 
@@ -92,6 +94,21 @@ public class PlayerMovement : MonoBehaviour
         {
             MovePlayer();
             CheckForAction();
+        }
+
+        if (dir > 0)
+        {
+            if (isWallSlide)
+                lookAtLeft = false;
+            else
+                lookAtLeft = true;
+        }
+        else
+        {
+            if (isWallSlide)
+                lookAtLeft = true;
+            else
+                lookAtLeft = false;
         }
 
     }
@@ -219,6 +236,7 @@ public class PlayerMovement : MonoBehaviour
     void ChangeDirection()
     {
         dir = dir * -1;
+
     }
     void MakeGrounded()
     {
@@ -232,6 +250,7 @@ public class PlayerMovement : MonoBehaviour
             isWallSlide = false;
         }
         myState = STATES.Walk;
+
     }
 
     void MakeWallSlide()
@@ -241,6 +260,7 @@ public class PlayerMovement : MonoBehaviour
         speed = 0.0f;
         nbJumpLeft = 2;
         myState = STATES.WallSlide;
+
     }
 
     void CheckForEndOfWall()

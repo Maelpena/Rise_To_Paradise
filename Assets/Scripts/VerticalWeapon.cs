@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VerticalWeapon : Weapon
 {
-    [SerializeField] private GameObject BalleType;
+    [SerializeField] public GameObject BalleType;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +22,6 @@ public class VerticalWeapon : Weapon
         GameObject Balle;
         Balle = Instantiate(BalleType, null);
         Balle.transform.position = gameObject.transform.position;
-        Debug.Log("Arme Bleu");
+            
     }
 }
