@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class ItemGeneratorScript : MonoBehaviour
 {
-    public float baseLuckSpawnItem = 10f;
-    public float CurrentLuck = 10f;
+    public float baseLuckSpawnItem = 2f;
+    public float CurrentLuck = 2f;
     public float LuckPercent = 100f;
     public List<GameObject> lPowerUps = new List<GameObject>();
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class ItemGeneratorScript : MonoBehaviour
         }
         else
         {
-            CurrentLuck +=(score / 1.5f) / 10;
+            CurrentLuck +=(score)*1.75f / 10;
         }
         
     }

@@ -25,9 +25,9 @@ TagManager:
   - Player
   - Enemies
   - Shields
-  - Projectile
+  - PlayerProjectile
   - Spike
-  - 
+  - EnemiesProjectile
   - 
   - 
   - 

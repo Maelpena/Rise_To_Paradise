@@ -5,14 +5,16 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float speed;
+    public float Normalspeed;
     public int dir = 1;
     public Rigidbody2D rb;
     public LayerMask lmForFloor;
     public float OffsetY;
+    public float YToFeet;
     public float OffsetX;
     public Animator anim;
-    public enum STATES { Walk, Jump, Fall, SecondJump };
-    string[] StatesSTab = new string[] { "Walk", "Jump", "Fall", "SecondJump" };
+    public enum STATES { Walk, Jump, Fall, Attack, Idle };
+    string[] StatesSTab = new string[] { "Walk", "Jump","Attack","Idle"};
     public STATES myState;
     public STATES myLastState;
     public int myLastDir;
@@ -89,8 +91,8 @@ public class EnemyMovement : MonoBehaviour
 
     void CheckForGround()
     {
-        RaycastHit2D rc1 = Physics2D.Raycast(new Vector2(rb.position.x - OffsetX, rb.position.y - 0.40f), -Vector2.up, OffsetY, lmForFloor);
-        RaycastHit2D rc2 = Physics2D.Raycast(new Vector2(rb.position.x + OffsetX, rb.position.y - 0.40f), -Vector2.up, OffsetY, lmForFloor);
+        RaycastHit2D rc1 = Physics2D.Raycast(new Vector2(rb.position.x - OffsetX, rb.position.y - YToFeet), -Vector2.up, OffsetY, lmForFloor);
+        RaycastHit2D rc2 = Physics2D.Raycast(new Vector2(rb.position.x + OffsetX, rb.position.y - YToFeet), -Vector2.up, OffsetY, lmForFloor);
 
         if (!rc1 && dir == -1 || !rc2 && dir == 1)
         {
@@ -101,8 +103,8 @@ public class EnemyMovement : MonoBehaviour
         }
 
   
-        Debug.DrawRay(new Vector2(rb.position.x - OffsetX, rb.position.y - 0.40f), new Vector3(0, -OffsetY, 0), Color.red, 0.0f);
-        Debug.DrawRay(new Vector2(rb.position.x + OffsetX, rb.position.y - 0.40f), new Vector3(0, -OffsetY, 0), Color.yellow, 0.0f);
+        Debug.DrawRay(new Vector2(rb.position.x - OffsetX, rb.position.y - YToFeet), new Vector3(0, -OffsetY, 0), Color.red, 0.0f);
+        Debug.DrawRay(new Vector2(rb.position.x + OffsetX, rb.position.y - YToFeet), new Vector3(0, -OffsetY, 0), Color.yellow, 0.0f);
     }
 
 
@@ -125,6 +127,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (myLastState != myState || myLastDir != dir)
         {
+            bool canAnim = true;
             string etat = null;
             myLastState = myState;
             myLastDir = dir;
@@ -139,20 +142,28 @@ public class EnemyMovement : MonoBehaviour
                 case STATES.Fall:
                     etat = "Fall";
                     break;
-                case STATES.SecondJump:
-                    etat = "SecondJump";
+                case STATES.Attack:
+                    etat = "Attack";
+                    canAnim = false;
+                    break;
+                case STATES.Idle:
+                    etat = "Idle";
                     break;
                 default:
                     break;
             }
-            if (dir > 0)
+            if (canAnim)
             {
-                anim.Play(etat + "_r");
+                if (dir > 0)
+                {
+                    anim.Play(etat + "_r");
+                }
+                else
+                {
+                    anim.Play(etat + "_l");
+                }
             }
-            else
-            {
-                anim.Play(etat + "_l");
-            }
+            
 
         }
     }

@@ -29,7 +29,16 @@ public class AnimationEventHandler : MonoBehaviour
         Destroy(go);
     }
 
-    public void DisplayEndMenu()
+    public void Attack()
     {
+        go.GetComponent<ShootingEnemy>().SpawnAndSetABullet();
+    }
+    public void EndOfAnimation()
+    {
+        go.GetComponent<ShootingEnemy>().EndOfAttack();
+    }
+    public void MakeKnockBack()
+    {
+        go.GetComponent<ShootingEnemy>().AddKnockback();
     }
 }

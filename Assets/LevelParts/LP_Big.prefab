@@ -2708,7 +2708,7 @@ MonoBehaviour:
   TM_oneSidePlateform: {fileID: 8331874190128838544}
   TM_BackGround: {fileID: 8981132154786699938}
   lSpawnDifficulty:
-  - {x: 1, y: 0, z: 1.5, w: 0}
+  - {x: 1, y: 0, z: 1.5, w: 2}
   - {x: 1, y: 3.5, z: 12.5, w: 0}
   - {x: 2, y: -3.5, z: 16.5, w: 0}
   - {x: 2, y: 0, z: 7.5, w: 1}

@@ -1631,6 +1631,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 239140181}
     m_Modifications:
+    - target: {fileID: -3880936318519441202, guid: 47f7f61a555c78f4ba038cdeebe25304,
+        type: 3}
+      propertyPath: KnockBackForce
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 2379278342556465012, guid: 47f7f61a555c78f4ba038cdeebe25304,
         type: 3}
       propertyPath: m_RootOrder
@@ -9090,7 +9095,7 @@ PrefabInstance:
     - target: {fileID: 6187178297261041141, guid: 0923cdbc63b6940498ac426921f8383c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34016174
+      value: 4.36
       objectReference: {fileID: 0}
     - target: {fileID: 6187178297261041141, guid: 0923cdbc63b6940498ac426921f8383c,
         type: 3}
@@ -17188,6 +17193,7 @@ GameObject:
   - component: {fileID: 1710197067}
   - component: {fileID: 1710197066}
   - component: {fileID: 1710197065}
+  - component: {fileID: 1710197070}
   m_Layer: 14
   m_Name: Spikes
   m_TagString: Spike
@@ -17395,6 +17401,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1710197070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710197063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48745460303ea1f478a124d08b012007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787836751
 GameObject:
   m_ObjectHideFlags: 0
