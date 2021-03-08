@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 2379278342556465010}
   - component: {fileID: 2379278342556465009}
   - component: {fileID: 2379278342556465013}
-  - component: {fileID: 972000148020910848}
+  - component: {fileID: -3880936318519441202}
   m_Layer: 11
   m_Name: BaseEnemy 1
   m_TagString: Enemies
@@ -230,7 +230,7 @@ MonoBehaviour:
   myLastState: 0
   myLastDir: 0
   isAlive: 1
---- !u!114 &972000148020910848
+--- !u!114 &-3880936318519441202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,13 +239,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2379278342556465023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81aebc8fd4d539a48bc3181aca059f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 77a00066afaf2bf47bc4ccd29ce2cc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
   life: 1
   damage: 1
-  score: 50
+  score: 0
+  BalleType: {fileID: 0}
+  startTimeBtwShots: 5
+  enemyBullet: {fileID: 6441750737923068585, guid: b629c0eda68a647489cc05be88530781,
+    type: 3}
 --- !u!1 &2379278342636607209
 GameObject:
   m_ObjectHideFlags: 0
