@@ -110,17 +110,14 @@ public class LevelGeneratorScript : MonoBehaviour
         GameObject GM = GameObject.Find("GameManager");
         if (GM.GetComponentInParent<ScoreRegister>().TotalScore > 500)
         {
-            Debug.Log("Difficulty 3");
             actualDifficulty = 3;
         }
         else if(GM.GetComponentInParent<ScoreRegister>().TotalScore > 200)
         {
-            Debug.Log("Difficulty 2");
             actualDifficulty = 2;
         }
         else
         {
-            Debug.Log("Difficulty 1");
             actualDifficulty = 1;
         }
     }

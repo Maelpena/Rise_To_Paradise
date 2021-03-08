@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 velocity;
 
     public ParticleSystem playerParticleSystem;
+    public Vector2 offsetParticleSystem;
     public int dir = 1;
     public float speed = 2.85f;
     public float maxSpeed = 2.85f;
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         GetComponent<CollisionScript>().EnewCollision.AddListener(ApplyCollision);
+        offsetParticleSystem = playerParticleSystem.gameObject.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -342,6 +344,7 @@ public class PlayerMovement : MonoBehaviour
             string etat = null;
             myLastState = myState;
             myLastDir = dir;
+            playerParticleSystem.gameObject.transform.localPosition = new Vector2( offsetParticleSystem.x * dir,offsetParticleSystem.y);
             switch (myState)
             {
                 case STATES.Walk:
