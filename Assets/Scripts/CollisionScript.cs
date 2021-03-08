@@ -140,18 +140,22 @@ public class CollisionScript : MonoBehaviour
                 
             }
         }
-        else if ((contact.collider.gameObject.tag.Equals("Floor") && contact.point.y < feetPos.position.y) &&( contact.normal == Vector2.up || (Vector2.Angle(contact.normal, Vector2.up) == 0.0f)) && GetComponent<PlayerMovement>().velocity.y <= 0.0f)
+        else if ((contact.collider.gameObject.tag.Equals("Floor") && contact.point.y < feetPos.position.y) &&( contact.normal == Vector2.up || (Vector2.Angle(contact.normal, Vector2.up) == 0.0f)) && GetComponent<PlayerMovement>() != null)
         {
-            if (!contact.collider.OverlapPoint(feetPos.position))
+            if (GetComponent<PlayerMovement>().velocity.y <= 0.0f)
             {
-                if(contact.collider.ClosestPoint(feetPos.position).y< feetPos.position.y)
+                if (!contact.collider.OverlapPoint(feetPos.position))
                 {
-                    hit = Vector2.up;
-                    Debug.DrawRay(contact.point, Vector2.up * 0.08f, Color.blue, 3.0f);
-                }
+                    if (contact.collider.ClosestPoint(feetPos.position).y < feetPos.position.y)
+                    {
+                        hit = Vector2.up;
+                        Debug.DrawRay(contact.point, Vector2.up * 0.08f, Color.blue, 3.0f);
+                    }
 
-                //contact.otherCollider.gameObject.transform.position = new Vector2(contact.otherCollider.gameObject.transform.position.x, contact.otherCollider.gameObject.transform.position.y + 0.005f);
+                    //contact.otherCollider.gameObject.transform.position = new Vector2(contact.otherCollider.gameObject.transform.position.x, contact.otherCollider.gameObject.transform.position.y + 0.005f);
+                }
             }
+            
         }
         else if (contact.collider.gameObject.tag.Equals("Floor") && contact.normal == Vector2.down && contact.collider.gameObject.GetComponent<PlatformEffector2D>() == null)
         {
