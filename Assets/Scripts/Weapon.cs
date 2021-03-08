@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     public int ballSpeedBonus = 0;
     public int ballSizeBonus = 0;
     public bool isDoubleBullet = false;
+    public bool isBulletCrossing;
+    public bool isVerticalBullet;
 
 
     // Start is called before the first frame update
@@ -22,9 +24,9 @@ public class Weapon : MonoBehaviour
     }
     public void DoAction()
     {
-        Action();
+        Shoot();
     }
-    protected virtual void Action() { }
+    public virtual void Shoot() { }
     public void setSpeedBonus(int speedBonus)
     {
         ballSpeedBonus = speedBonus;
@@ -36,5 +38,15 @@ public class Weapon : MonoBehaviour
     public void setDoubleBullet(bool doubleBullet)
     {
         isDoubleBullet = doubleBullet;
+    }
+    
+    public void setBulletCrossing(bool bulletCrossing)
+    {
+        isBulletCrossing = bulletCrossing;
+    }
+
+    public void setVerticalBullet(bool verticalBullet)
+    {
+        isVerticalBullet = verticalBullet;
     }
 }

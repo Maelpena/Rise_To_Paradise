@@ -128,7 +128,6 @@ GameObject:
   - component: {fileID: 3628643386485666780}
   - component: {fileID: 3628643386485666779}
   - component: {fileID: 3628643386485666783}
-  - component: {fileID: 3628643386485666768}
   - component: {fileID: 3628643386485666781}
   - component: {fileID: 3628643386485666769}
   m_Layer: 10
@@ -214,6 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd8a5a72d0d1c248a6dfda86b1a3944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  playerParticleSystem: {fileID: 0}
   dir: 1
   speed: 3.5
   maxSpeed: 3.5
@@ -230,23 +231,13 @@ MonoBehaviour:
     m_Bits: 823
   anim: {fileID: 0}
   feetPos: {fileID: 3628643386905283012}
+  powerUpCoolDown: 0
+  isShield: 0
+  isInvincible: 0
   myState: 0
   myLastState: 0
   myLastDir: 0
   isAlive: 1
---- !u!114 &3628643386485666768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3628643386485666778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35464182c1c9ced4ba8daf85d78683fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActualWeapon: {fileID: 861258807232067299}
 --- !u!114 &3628643386485666781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,9 +251,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feetPos: {fileID: 3628643386905283012}
-  charData: {fileID: 3628643386485666769}
   lvContacts: []
   lvColliders: []
+  lMaskCollision:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3628643386485666769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,10 +268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436b5a2aba03e404fb4042b40564f54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventDeath:
+    m_PersistentCalls:
+      m_Calls: []
   velocity: {x: 1, y: 1}
   life: 1
   damage: 1
   score: 0
+  IsPlayer: 0
 --- !u!1 &3628643386905283011
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,15 +391,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3628643385759380498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &861258807232067299 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4154651734099903217, guid: a5547bc8c6afc3b4483da241e111de45,
-    type: 3}
-  m_PrefabInstance: {fileID: 3628643385759380498}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98928904bf7f24d49860eedacd3cc0c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

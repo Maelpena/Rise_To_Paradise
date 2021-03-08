@@ -31,6 +31,5 @@ public class AnimationEventHandler : MonoBehaviour
 
     public void DisplayEndMenu()
     {
-        go.GetComponent<CharacterData>().eventDeath.Invoke();
     }
 }

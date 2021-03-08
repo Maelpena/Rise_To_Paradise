@@ -6,11 +6,10 @@ using System;
 
 public class ScoreRegister : MonoBehaviour
 {
-    public GameObject player;
-    public CharacterData charData;
+    public Player player;
     public TMP_Text scoreText;
     public TMP_Text endScoreText;
-    public double HeightScore;
+    public float HeightScore;
     public float TotalScore;
     public float killScore;
 
@@ -29,10 +28,10 @@ public class ScoreRegister : MonoBehaviour
     {
         if (player != null)
         {
-            if ((int)Math.Round(player.transform.position.y) > 0)
+            if (Math.Round(player.transform.position.y) > 0)
             {
-                HeightScore = Mathf.Max((float)Math.Round(player.transform.position.y) * 2, (float)HeightScore);
-                TotalScore = (float)HeightScore + charData.score + killScore;
+                HeightScore = Mathf.Max((float)Math.Round(player.transform.position.y) * 2, HeightScore);
+                TotalScore = HeightScore + killScore;
                 scoreText.text = TotalScore.ToString();
                 endScoreText.text = TotalScore.ToString();
             }
@@ -41,7 +40,7 @@ public class ScoreRegister : MonoBehaviour
     }
     private void OnEnable()
     {
-        CharacterData.eventEnemyDeath.AddListener(EnemyDied);
+        Enemy.eventEnemyDeath.AddListener(EnemyDied);
     }
 
     private void EnemyDied(float score, Vector2 position, GameObject Levelpart)

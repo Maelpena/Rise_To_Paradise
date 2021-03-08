@@ -7,7 +7,6 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public int dir = 1;
     public Rigidbody2D rb;
-    private CharacterData charData;
     public LayerMask lmForFloor;
     public float OffsetY;
     public float OffsetX;
@@ -18,13 +17,13 @@ public class EnemyMovement : MonoBehaviour
     public STATES myLastState;
     public int myLastDir;
     public bool isAlive = true;
+    private int life = 1;
 
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<CollisionScript>().EnewCollision.AddListener(ApplyCollision);
-        charData = GetComponent<CharacterData>();
         anim = GetComponentInChildren<Animator>();
         myState = STATES.Walk;
     }
@@ -106,49 +105,11 @@ public class EnemyMovement : MonoBehaviour
         Debug.DrawRay(new Vector2(rb.position.x + OffsetX, rb.position.y - 0.40f), new Vector3(0, -OffsetY, 0), Color.yellow, 0.0f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+
+    public void PlayDie()
     {
-/*        Debug.Log(collision.gameObject.GetComponent<PlayerMovement>().isShield);
-*/
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-
-            if (!collision.gameObject.GetComponent<PlayerMovement>().isShield && !collision.gameObject.GetComponent<PlayerMovement>().isInvincible)
-            {
-                collision.gameObject.GetComponent<PlayerMovement>().Die();
-            } else if(collision.gameObject.GetComponent<PlayerMovement>().isShield)
-            {
-                GetComponent<CharacterData>().takeDamage(1);
-                if (collision.gameObject.GetComponent<PlayerMovement>())
-                {
-                    collision.gameObject.GetComponent<PlayerMovement>().isShield = false;
-                    collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0;
-                    collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0;
-                }
-                
-            } else
-            {
-                GetComponent<CharacterData>().takeDamage(1);
-            }
-
-        }
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            if (!collision.gameObject.GetComponent<PlayerMovement>().isShield)
-            {
-                collision.gameObject.GetComponent<CharacterData>().takeDamage(charData.damage);
-            } else
-            {
-                GetComponent<CharacterData>().takeDamage(1);
-                collision.gameObject.GetComponent<PlayerMovement>().isShield = false;
-                collision.gameObject.GetComponent<PlayerMovement>().powerUpCoolDown = 0; ;
-
-            }
-
-        }
-    }
-    public void Die()
-    {
+        CameraController.shakeCoolDown = 0.2f;
         isAlive = false;
         GetComponent<BoxCollider2D>().enabled = false;
         if (dir > 0)
