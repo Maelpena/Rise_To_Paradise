@@ -17843,7 +17843,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 11
+  m_text: '0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -17914,7 +17916,7 @@ MonoBehaviour:
     textComponent: {fileID: 2066543114}
     characterCount: 2
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -18374,7 +18376,7 @@ PrefabInstance:
     - target: {fileID: 3628643386485666782, guid: 53bf3e291717a1f49a48f447e468e331,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -2.38
       objectReference: {fileID: 0}
     - target: {fileID: 3628643386485666782, guid: 53bf3e291717a1f49a48f447e468e331,
         type: 3}
