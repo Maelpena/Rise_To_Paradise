@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public Transform feetPos;
     public bool lookAtLeft = false;
+    public bool InputHeld = false;
 
 
 
@@ -49,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(640, 480, true);
         anim = GetComponentInChildren<Animator>();
         GetComponent<CollisionScript>().EnewCollision.AddListener(ApplyCollision);
         offsetParticleSystem = playerParticleSystem.gameObject.transform.localPosition;
@@ -65,13 +67,24 @@ public class PlayerMovement : MonoBehaviour
 
         if (isAlive)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!InputHeld)
             {
-                PerformAction();
+                if (Input.touchCount > 0)
+                {
+                    PerformAction();
+                    InputHeld = true;
+                }
             }
+            else
+            {
+                if (Input.touchCount == 0){
+                    InputHeld = false;
+                }
+            }
+            
             if (myState == STATES.Jump || (myState == STATES.SecondJump))
             {
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.touchCount > 0)
                 {
                     gravity = Jumpgravity;
                 }

@@ -21,23 +21,26 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pausePanel.activeSelf) 
-            {
-                Time.timeScale = 1;
-                pausePanel.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 0;
-                pausePanel.SetActive(true);
-            }
+            
 
         }
 
     }
-
+    public void DisplayPauseMenu()
+    {
+        if (pausePanel.activeSelf)
+        {
+            Time.timeScale = 1;
+            pausePanel.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 0;
+            pausePanel.SetActive(true);
+        }
+    }
     public void DisplayEndMenu()
     {
         Time.timeScale = 0;
