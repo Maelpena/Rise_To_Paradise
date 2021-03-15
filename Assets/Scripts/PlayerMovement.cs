@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!InputHeld)
             {
-                if (Input.touchCount > 0)
+                if (Input.touchCount > 0 || Input.GetKey(KeyCode.Space) == true)
                 {
                     PerformAction();
                     InputHeld = true;
@@ -77,14 +77,15 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                if (Input.touchCount == 0){
+                if (Input.touchCount == 0 && Input.GetKey(KeyCode.Space) == false)
+                {
                     InputHeld = false;
                 }
             }
             
             if (myState == STATES.Jump || (myState == STATES.SecondJump))
             {
-                if (Input.touchCount > 0)
+                if (Input.touchCount > 0 || Input.GetKey(KeyCode.Space) == true)
                 {
                     gravity = Jumpgravity;
                 }
